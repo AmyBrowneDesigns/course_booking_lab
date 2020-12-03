@@ -82,5 +82,4 @@ public class Course {
         this.bookings = bookings;
     }
 
-    private List<Booking> bookings;
 }
