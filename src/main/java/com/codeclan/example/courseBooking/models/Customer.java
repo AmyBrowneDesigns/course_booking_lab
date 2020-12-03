@@ -17,13 +17,15 @@ public class Customer {
 
     @Column(name = "name")
     private String name;
+
     @Column(name = "town")
     private String town;
+
     @Column(name = "age")
     private int age;
 
     @JsonIgnoreProperties({"customer"})
-    @OneToMany(mappedBy = "customers", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
     private List<Booking> bookings;
 
 
