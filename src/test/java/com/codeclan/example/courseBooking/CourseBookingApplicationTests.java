@@ -69,4 +69,10 @@ public class CourseBookingApplicationTests {
 		assertEquals("Hermione Grainger", foundCustomer.get(0).getName());
 	}
 
+	@Test
+	public void findCustomersGreaterThanAgeAndTownAndCourse() {
+		List<Customer> foundCustomer = customerRepository.findAllByAgeGreaterThanAndTownAndBookingsCourseId(13, "Kent", 1L);
+		assertEquals("Hermione Grainger", foundCustomer.get(0).getName());
+	}
+
 }

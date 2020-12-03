@@ -18,12 +18,16 @@ public class CustomerController {
 
     @GetMapping(value ="/customers")
     public ResponseEntity<List<Customer>> getAllCustomers(@RequestParam(name= "courseId", required = false)Long courseId,
-                                                          @RequestParam(name= "customerTown", required = false)String customerTown) {
+                                                          @RequestParam(name= "customerTown", required = false)String customerTown,
+                                                          @RequestParam(name= "age", required = false) Integer age) {
         if(courseId !=null){
             return new ResponseEntity<>(customerRepository.findCustomersByBookingsCourseId(courseId), HttpStatus.OK);
         }
         if(customerTown !=null && courseId !=null){
             return new ResponseEntity<>(customerRepository.findAllByTownAndBookingsCourseId(customerTown, courseId), HttpStatus.OK);
+        }
+        if(age !=null && customerTown !=null && courseId !=null) {
+            return new ResponseEntity<>(customerRepository.findAllByAgeGreaterThanAndTownAndBookingsCourseId(age, customerTown, courseId), HttpStatus.OK);
         }
         return new ResponseEntity<>(customerRepository.findAll(), HttpStatus.OK);
     }
