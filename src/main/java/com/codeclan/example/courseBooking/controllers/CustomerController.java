@@ -12,14 +12,18 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-public class CustomerControlller {
+public class CustomerController {
     @Autowired
     CustomerRepository customerRepository;
 
     @GetMapping(value ="/customers")
-    public ResponseEntity<List<Customer>> getAllCustomers(@RequestParam(name= "courseId", required = false)Long courseId) {
+    public ResponseEntity<List<Customer>> getAllCustomers(@RequestParam(name= "courseId", required = false)Long courseId,
+                                                          @RequestParam(name= "customerTown", required = false)String customerTown) {
         if(courseId !=null){
             return new ResponseEntity<>(customerRepository.findCustomersByBookingsCourseId(courseId), HttpStatus.OK);
+        }
+        if(customerTown !=null && courseId !=null){
+            return new ResponseEntity<>(customerRepository.findAllByTownAndBookingsCourseId(customerTown, courseId), HttpStatus.OK);
         }
         return new ResponseEntity<>(customerRepository.findAll(), HttpStatus.OK);
     }

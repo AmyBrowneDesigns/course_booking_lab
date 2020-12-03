@@ -6,7 +6,7 @@ import com.codeclan.example.courseBooking.models.Customer;
 import com.codeclan.example.courseBooking.repositories.BookingRepository;
 import com.codeclan.example.courseBooking.repositories.CourseRepository;
 import com.codeclan.example.courseBooking.repositories.CustomerRepository;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-class CourseBookingApplicationTests {
+public class CourseBookingApplicationTests {
 
 	@Autowired
 	CustomerRepository customerRepository;
@@ -30,7 +30,7 @@ class CourseBookingApplicationTests {
 	BookingRepository bookingRepository;
 
 	@Test
-	void contextLoads() {
+	public void contextLoads() {
 	}
 
 	@Test
@@ -61,7 +61,12 @@ class CourseBookingApplicationTests {
 	public void findBookingsByDate() {
 		List<Booking> foundBookings = bookingRepository.findBookingsByDate("12-01-21");
 		assertEquals(2, foundBookings.size());
+	}
 
+	@Test
+	public void findCustomersByTownAndCourseId(){
+		List<Customer> foundCustomer = customerRepository.findAllByTownAndBookingsCourseId("Kent",1L);
+		assertEquals("Hermione Grainger", foundCustomer.get(0).getName());
 	}
 
 }
