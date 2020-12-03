@@ -51,6 +51,10 @@ class CourseBookingApplicationTests {
 		assertEquals(1, foundCustomers.size());
 	}
 
-
+	@Test
+	public void findCoursesByCustomerId(){
+		List<Course> foundCourses = courseRepository.findCoursesByBookingsCustomerId(1L);
+		assertEquals(1, foundCourses.size());
+	}
 
 }
