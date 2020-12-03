@@ -57,4 +57,11 @@ class CourseBookingApplicationTests {
 		assertEquals(1, foundCourses.size());
 	}
 
+	@Test
+	public void findBookingsByDate() {
+		List<Booking> foundBookings = bookingRepository.findBookingsByDate("12-01-21");
+		assertEquals(2, foundBookings.size());
+
+	}
+
 }

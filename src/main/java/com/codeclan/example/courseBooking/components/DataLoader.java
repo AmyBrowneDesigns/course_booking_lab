@@ -34,13 +34,21 @@ public class DataLoader implements ApplicationRunner {
         courseRepository.save(course1);
         Course course2 = new Course("Herbology", "Greenhouses", 4);
         courseRepository.save(course2);
+        Course course3 = new Course("Advanced Potions", "Hogwarts", 5);
+        courseRepository.save(course3);
+        Course course4 = new Course("Care of magical creatures", "Forbidden Forest", 2);
+        courseRepository.save(course4);
 
         //Customer
 
         Customer customer1 = new Customer("Harry Potter", "London", 13);
         customerRepository.save(customer1);
-        Customer customer2 = new Customer("Hermione", "Kent", 14);
+        Customer customer2 = new Customer("Hermione Grainger", "Kent", 14);
         customerRepository.save(customer2);
+        Customer customer3 = new Customer("Ron Weasley", "Swansea", 13);
+        customerRepository.save(customer3);
+        Customer customer4 = new Customer("Draco Malfoy", "Hull", 14);
+        customerRepository.save(customer4);
 
 
         //Booking
@@ -49,7 +57,10 @@ public class DataLoader implements ApplicationRunner {
         bookingRepository.save(booking1);
         Booking booking2 = new Booking("12-01-21", customer2, course1);
         bookingRepository.save(booking2);
-
+        Booking booking3 = new Booking("12-01-21", customer3, course4);
+        bookingRepository.save(booking3);
+        Booking booking4 = new Booking("10-08-22", customer4, course3);
+        bookingRepository.save(booking4);
     }
 
 
